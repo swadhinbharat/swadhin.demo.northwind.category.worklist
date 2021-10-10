@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: '2.4'
+metadata:
+  name: 'swadhin.demo.northwind.category.worklist'
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: https://vhcals4h.fsic.sap.corp:44310
+          client: "100"
+        credentials:
+          username: env:CS6_USER
+          password: env:CS6_PASSWORD
+        app:
+          name: ZSW_CAT_WL
+          description: Category
+          package: TEST_SW_FIORI
+          # transport: "CS6K900937"          
