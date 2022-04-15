@@ -1,9 +1,11 @@
 //This file used only for loading the changes in the preview and not required to be checked in.
 //Loads and extends the openui5 FileListBaseConnector
 
+const parsedUI5Version = sap.ui.version.split('.');
+
 //For UI5 version >= 1.80, the location of the FileListBaseConnector is different
 const connectorPath =
-    parseFloat(sap.ui.version) >= 1.8
+    parseInt(parsedUI5Version[0], 10) >= 1 && parseInt(parsedUI5Version[1], 10) >= 80
         ? 'sap/ui/fl/write/api/connectors/FileListBaseConnector'
         : 'sap/ui/fl/initial/api/connectors/FileListBaseConnector';
 
